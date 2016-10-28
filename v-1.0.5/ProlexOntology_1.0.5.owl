@@ -1,0 +1,3906 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.univ-tours.fr/li/Prolex/Ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.univ-tours.fr/li/Prolex/Ontology"
+     versionIRI="http://www.univ-tours.fr/li/Prolex/Ontology/1.0.5">
+    <Prefix name="" IRI="http://www.univ-tours.fr/li/Prolex/Ontology#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://www.w3.org/TR/skos-reference/skos-owl1-dl.rdf</Import>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">nothing</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#note"/>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">noting</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Prolexbase&apos;s ontology</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="http://purl.org/dc/terms/creator"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Mouhamad Ndiankho THIAM</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI></IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Suppression des entités suivantes:
+- Rule
+- AliasiationRule
+- DerivationRule
+- HistoricalExistence
+- ReligiousExistence
+- FictitiousExistence
+- Inflection
+
+Suppression des propriétés suivantes:
+- derivationRule
+- AlisizationRule
+- inflection
+
+Ajout d&apos;entités:
++ SynSet
+
+Ajout d&apos;individus:
++ historicalExistence
++ religiousExistence
++ fictitiousExistence
+
+Ajout de propriétés:
++ member
++ canonicPivot
+
+Ajout de caractéristiques à des propriétés:
++ &quot;functional&quot; pour type et existence
++ &quot;symmetric&quot; et &quot;transitive&quot; pour quasiSynonym, diaphasicSynonym, diachronicSynonym et diastraticSynonym.
++ &quot;transitve&quot; et &quot;assymmetric&quot; pour meronym et holonym
++ &quot;inverse functional&quot; pour member
+
+Renommage:
+accessibility -&gt; accessible
+relativeAccessibility -&gt; relativeAccessible
+.............................................................
+.............................................................
+.............................................................
+rivalAccessibility -&gt; rivalAccessible
+
+Changement du version l&apos;URI de l&apos;ontology
+1.0.2 -&gt; 1.0.3
+
+Ajout de descriptions d&apos;individus:
++ type &quot;ProperNameHypernym&quot; pour Association, Astronym et Anthroponym
+
+Ajout de description du vocabulaire
++ propriété &quot;isDefinedBy&quot; pour tous les éléments sdu vocabulaire</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:priorVersion"/>
+        <IRI>/1.0.2</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Ontologie de Prolexbase</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#Accessibility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AccessibilityContext"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Alias"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AliasCategory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Antonomasia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Categorizable"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Category"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Classification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClassifyingContext"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CollocationCategory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ConstituantElement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Context"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Derivative"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Derivative2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DerivativeCategory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EponymExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Existence"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FunctionalWord"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GrammaticalCategory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Idiom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Instance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Language"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lemma"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LexicalEntry"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Morphology"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Phonetics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pivot"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Prolexeme"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PropernameHypernym"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ReliabilityCode"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SynSet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Template"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Terminology"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#accessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#antonomasia"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#argument"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#canonicPivot"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#capital"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#capitalAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#category"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#classification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#collocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#companion"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#companionAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#constituant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#context"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#creator"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#creatorAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#diachronicSynonym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#diaphasicSynonym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#diastraticSynonym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#entry"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eponym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#existence"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#follower"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#followerAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#founder"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#founderAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#frequency"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAlias"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDerivative"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#headquaters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#headquatersAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#heir"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#heirAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#holonyme"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hypernym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hyponym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#idiom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#instance"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAliasOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isDerivativeOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isEntryOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isProlexemeOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#language"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#leader"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#leaderAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#manager"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#managerAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#member"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#meronym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#morphology"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#partOfSpeech"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#phonetics"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#pivot"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#primaryHypernym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#prolexeme"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#quasiSynonym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#relative"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#relativeAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#rival"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#rivalAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#sorting"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#template"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tenant"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tenantAccessible"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#terminology"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#type"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#broader"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#broaderTransitive"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#hasTopConcept"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="rdfs:comment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="rdfs:label"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Anthroponym"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Association"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Astronym"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Building"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Celebrity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#City"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Collective"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Country"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Disaster"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dynasty"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ensemble"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ergonym"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ethnonym"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Event"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Feast"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Firm"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FirstName"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Geonym"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Group"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#History"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hydronym"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Individual"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Institution"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Meteorology"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Object"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Organisation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Patronymic"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pragmonym"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Product"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PropernameHypernymeScheme"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PseudoAnthroponym"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Region"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Supranational"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Territory"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thought"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Toponym"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Vessel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Way"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Work"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#fictitiousExistence"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#historicalExistence"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#religiousExistence"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Alias"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#LexicalEntry"/>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#isAliasOf"/>
+                <Class IRI="#LexicalEntry"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Derivative"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#LexicalEntry"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#isDerivativeOf"/>
+                <Class IRI="#LexicalEntry"/>
+            </ObjectAllValuesFrom>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#isDerivativeOf"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Derivative2"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#isDerivativeOf"/>
+            <Class IRI="#LexicalEntry"/>
+        </ObjectExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Lemma"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#LexicalEntry"/>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#pivot"/>
+                <Class IRI="#Pivot"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Accessibility"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#context"/>
+            <Class IRI="#AccessibilityContext"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AccessibilityContext"/>
+        <Class IRI="#Context"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AliasCategory"/>
+        <Class IRI="#Category"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Antonomasia"/>
+        <Class IRI="#EponymExpression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Categorizable"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#category"/>
+            <Class IRI="#Category"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Classification"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#context"/>
+            <Class IRI="#ClassifyingContext"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ClassifyingContext"/>
+        <Class IRI="#Context"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CollocationCategory"/>
+        <Class IRI="#Category"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DerivativeCategory"/>
+        <Class IRI="#Category"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Idiom"/>
+        <Class IRI="#EponymExpression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PropernameHypernym"/>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Terminology"/>
+        <Class IRI="#EponymExpression"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Alias"/>
+        <Class IRI="#Derivative"/>
+        <Class IRI="#Lemma"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Anthroponym"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Association"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Astronym"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Building"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Celebrity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#City"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Collective"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Country"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Disaster"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Dynasty"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Ensemble"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Ethnonym"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Event"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Feast"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Firm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#FirstName"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Geonym"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Group"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#History"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Hydronym"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Individual"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Institution"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Meteorology"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Object"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Organisation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Patronymic"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Pragmonym"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Product"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="#PropernameHypernymeScheme"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#PseudoAnthroponym"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Region"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Supranational"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Territory"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Thought"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Vessel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Way"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PropernameHypernym"/>
+        <NamedIndividual IRI="#Work"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Existence"/>
+        <NamedIndividual IRI="#fictitiousExistence"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Existence"/>
+        <NamedIndividual IRI="#historicalExistence"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Existence"/>
+        <NamedIndividual IRI="#religiousExistence"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Association"/>
+        <NamedIndividual IRI="#Group"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Astronym"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Building"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#Building"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Celebrity"/>
+        <NamedIndividual IRI="#Individual"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#City"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#City"/>
+        <NamedIndividual IRI="#Collective"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#City"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Collective"/>
+        <NamedIndividual IRI="#Anthroponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Country"/>
+        <NamedIndividual IRI="#Territory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Disaster"/>
+        <NamedIndividual IRI="#Pragmonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Dynasty"/>
+        <NamedIndividual IRI="#Collective"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Ensemble"/>
+        <NamedIndividual IRI="#Group"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Ethnonym"/>
+        <NamedIndividual IRI="#Collective"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Event"/>
+        <NamedIndividual IRI="#Pragmonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#Event"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Feast"/>
+        <NamedIndividual IRI="#Pragmonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Firm"/>
+        <NamedIndividual IRI="#Group"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#FirstName"/>
+        <NamedIndividual IRI="#Individual"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Geonym"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Group"/>
+        <NamedIndividual IRI="#Collective"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#Group"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#Group"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#History"/>
+        <NamedIndividual IRI="#Pragmonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#History"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Hydronym"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Individual"/>
+        <NamedIndividual IRI="#Anthroponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Institution"/>
+        <NamedIndividual IRI="#Group"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Meteorology"/>
+        <NamedIndividual IRI="#Pragmonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Object"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Organisation"/>
+        <NamedIndividual IRI="#Group"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Patronymic"/>
+        <NamedIndividual IRI="#Individual"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#Pragmonym"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Product"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#hasTopConcept"/>
+        <NamedIndividual IRI="#PropernameHypernymeScheme"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#hasTopConcept"/>
+        <NamedIndividual IRI="#PropernameHypernymeScheme"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#hasTopConcept"/>
+        <NamedIndividual IRI="#PropernameHypernymeScheme"/>
+        <NamedIndividual IRI="#Pragmonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#hasTopConcept"/>
+        <NamedIndividual IRI="#PropernameHypernymeScheme"/>
+        <NamedIndividual IRI="#Anthroponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#PseudoAnthroponym"/>
+        <NamedIndividual IRI="#Individual"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Region"/>
+        <NamedIndividual IRI="#Territory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Supranational"/>
+        <NamedIndividual IRI="#Territory"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Territory"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#Territory"/>
+        <NamedIndividual IRI="#Collective"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Thought"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Vessel"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#Vessel"/>
+        <NamedIndividual IRI="#Collective"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#Vessel"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Way"/>
+        <NamedIndividual IRI="#Toponym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <NamedIndividual IRI="#Way"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <NamedIndividual IRI="#Work"/>
+        <NamedIndividual IRI="#Ergonym"/>
+    </ObjectPropertyAssertion>
+    <EquivalentObjectProperties>
+        <ObjectProperty IRI="#hypernym"/>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#broaderTransitive"/>
+    </EquivalentObjectProperties>
+    <EquivalentObjectProperties>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#broader"/>
+    </EquivalentObjectProperties>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#antonomasia"/>
+        <ObjectProperty IRI="#eponym"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#capitalAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#companionAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#creatorAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#diachronicSynonym"/>
+        <ObjectProperty IRI="#quasiSynonym"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#diaphasicSynonym"/>
+        <ObjectProperty IRI="#quasiSynonym"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#diastraticSynonym"/>
+        <ObjectProperty IRI="#quasiSynonym"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#followerAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#founderAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#headquatersAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#heirAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#idiom"/>
+        <ObjectProperty IRI="#eponym"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#leaderAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#managerAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <ObjectProperty IRI="#hypernym"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#relativeAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#rivalAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <ObjectProperty IRI="#hypernym"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#tenantAccessible"/>
+        <ObjectProperty IRI="#accessible"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#terminology"/>
+        <ObjectProperty IRI="#eponym"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#capital"/>
+        <ObjectProperty IRI="#capitalAccessible"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#companion"/>
+        <ObjectProperty IRI="#companionAccessible"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#creator"/>
+        <ObjectProperty IRI="#creatorAccessible"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#entry"/>
+        <ObjectProperty IRI="#isEntryOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#follower"/>
+        <ObjectProperty IRI="#followerAccessible"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#founderAccessible"/>
+        <ObjectProperty IRI="#founder"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasAlias"/>
+        <ObjectProperty IRI="#isAliasOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasDerivative"/>
+        <ObjectProperty IRI="#isDerivativeOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#headquaters"/>
+        <ObjectProperty IRI="#headquatersAccessible"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#heirAccessible"/>
+        <ObjectProperty IRI="#heir"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#meronym"/>
+        <ObjectProperty IRI="#holonyme"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hyponym"/>
+        <ObjectProperty IRI="#hypernym"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isProlexemeOf"/>
+        <ObjectProperty IRI="#prolexeme"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#leader"/>
+        <ObjectProperty IRI="#leaderAccessible"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#manager"/>
+        <ObjectProperty IRI="#managerAccessible"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#prolexeme"/>
+        <ObjectProperty IRI="#pivot"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#relativeAccessible"/>
+        <ObjectProperty IRI="#relative"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#rivalAccessible"/>
+        <ObjectProperty IRI="#rival"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#tenant"/>
+        <ObjectProperty IRI="#tenantAccessible"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#argument"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#canonicPivot"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#category"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#context"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#existence"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#frequency"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isAliasOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isDerivativeOf"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#language"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#morphology"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#partOfSpeech"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#phonetics"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#pivot"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#primaryHypernym"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#template"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#type"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#member"/>
+    </InverseFunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#diachronicSynonym"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#diaphasicSynonym"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#diastraticSynonym"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#quasiSynonym"/>
+    </SymmetricObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#holonyme"/>
+    </AsymmetricObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#meronym"/>
+    </AsymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#diachronicSynonym"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#diaphasicSynonym"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#diastraticSynonym"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#holonyme"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hypernym"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#meronym"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#quasiSynonym"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#antonomasia"/>
+        <Class IRI="#Lemma"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#argument"/>
+        <Class IRI="#Accessibility"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#canonicPivot"/>
+        <Class IRI="#SynSet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capital"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#capitalAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#category"/>
+        <Class IRI="#Categorizable"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#classification"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#collocation"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#companion"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#companionAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#constituant"/>
+        <Class IRI="#Classification"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#creator"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#creatorAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#diachronicSynonym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#diaphasicSynonym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#diastraticSynonym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#entry"/>
+        <Class IRI="#Prolexeme"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eponym"/>
+        <Class IRI="#Lemma"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#existence"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#follower"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#followerAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#founder"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#founderAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#frequency"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAlias"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDerivative"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#headquaters"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#heir"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#heirAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#holonyme"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hypernym"/>
+        <Class IRI="#PropernameHypernym"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#idiom"/>
+        <Class IRI="#Lemma"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#instance"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isAliasOf"/>
+        <Class IRI="#Alias"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isDerivativeOf"/>
+        <Class IRI="#Derivative"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#language"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#leader"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#leaderAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#manager"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#managerAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#member"/>
+        <Class IRI="#SynSet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#meronym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#partOfSpeech"/>
+        <Class IRI="#Instance"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#phonetics"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#pivot"/>
+        <Class IRI="#Prolexeme"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <Class IRI="#PropernameHypernym"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#prolexeme"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#quasiSynonym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#relative"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#relativeAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#rival"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#rivalAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <Class IRI="#PropernameHypernym"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#sorting"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#template"/>
+        <Class IRI="#Context"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tenant"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tenantAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#terminology"/>
+        <Class IRI="#Lemma"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#type"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#antonomasia"/>
+        <Class IRI="#Antonomasia"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#argument"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#canonicPivot"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#capital"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#capitalAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#category"/>
+        <Class IRI="#Category"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#classification"/>
+        <Class IRI="#Classification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#collocation"/>
+        <Class IRI="#FunctionalWord"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#companion"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#companionAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#constituant"/>
+        <Class IRI="#ConstituantElement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#context"/>
+        <Class IRI="#Context"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#creator"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#creatorAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#diachronicSynonym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#diaphasicSynonym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#diastraticSynonym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#entry"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#eponym"/>
+        <Class IRI="#EponymExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#existence"/>
+        <Class IRI="#Existence"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#follower"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#followerAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#founder"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#founderAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#frequency"/>
+        <Class IRI="#ReliabilityCode"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAlias"/>
+        <Class IRI="#Alias"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDerivative"/>
+        <Class IRI="#Derivative"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#headquaters"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#heir"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#heirAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#holonyme"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hypernym"/>
+        <Class IRI="#PropernameHypernym"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#idiom"/>
+        <Class IRI="#Idiom"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#instance"/>
+        <Class IRI="#Instance"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isAliasOf"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isDerivativeOf"/>
+        <Class IRI="#LexicalEntry"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#language"/>
+        <Class IRI="#Language"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#leader"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#leaderAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#manager"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#managerAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#member"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#meronym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#morphology"/>
+        <Class IRI="#Morphology"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#partOfSpeech"/>
+        <Class IRI="#GrammaticalCategory"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#phonetics"/>
+        <Class IRI="#Phonetics"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#pivot"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#primaryHypernym"/>
+        <Class IRI="#PropernameHypernym"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#prolexeme"/>
+        <Class IRI="#Lemma"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#quasiSynonym"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#relative"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#relativeAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#rival"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#rivalAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#secondaryHypernym"/>
+        <Class IRI="#PropernameHypernym"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#sorting"/>
+        <Class IRI="#ConstituantElement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#template"/>
+        <Class IRI="#Template"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#tenant"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#tenantAccessible"/>
+        <Class IRI="#Pivot"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#terminology"/>
+        <Class IRI="#Terminology"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#type"/>
+        <Class IRI="#PropernameHypernym"/>
+    </ObjectPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Accessibility</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Is the accessebility on language level.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Accessibility</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Représente lo&apos;acessibilité au niveau langue.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Accessibility</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Accessibility</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Acessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Accessibility</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Acessibilité</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AccessibilityContext</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Context specialized in classification witch links between a template and a whole or a part of another proper name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AccessibilityContext</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">contexte pour former l&apos;explication à partir du modèle et d&apos;un autre nom propre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#AccessibilityContext</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AccessibilityContext</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Accessibility Context</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AccessibilityContext</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">contexte d&apos;accessibilité</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#AccessibilityContext</IRI>
+        <Literal datatypeIRI="&xsd;anyURI">:Context</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Alias</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">alias, another the way to designate the same thing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Alias</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">alias, autre manière de désigner l même chose</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Alias</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Alias</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">alias</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Alias</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">alias</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#AliasCategory</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AliasCategory</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">alias category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AliasCategory</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">catégorie d&apos;Alias</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Antonomasia</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Antonomase. On l&apos;utilisé quand on fait référence à un nom commun en utilsant un nom propre.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Antonomasia</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Antonomasia. We use it when an common noun is called by a proper name.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Antonomasia</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Antonomasia</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Antonomase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Antonomasia</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Antonomasia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Categorizable</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">All classes that can be devided as category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Categorizable</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">tout ce qui peut être classé en catégorie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Categorizable</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Categorizable</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Categorizable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Categorizable</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">catégtorisable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Category</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">something representing a category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Category</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Category</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Category</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">catégorie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Classification</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">An element that helps for building a noun phrase that explains the proper name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Classification</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Un élément qui permet de regrouper un constituant et un modèle pour construire une phrase explicative du nom propre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Classification</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Classification</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">classification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Classification</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">classification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ClassifyingContext</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Context specialized in classification witch links between a template and a whole or a part of the proper name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ClassifyingContext</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">contexte pour former l&apos;explication à partir du modèle et d&apos;une partie ou tout du nom propre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#ClassifyingContext</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ClassifyingContext</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">classifying context</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ClassifyingContext</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">contexte de classification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <IRI>#ClassifyingContext</IRI>
+        <Literal datatypeIRI="&xsd;anyURI">:Context</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#CollocationCategory</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CollocationCategory</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">catégorie de collocation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CollocationCategory</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">collocation category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ConstituantElement</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">the whole or a part of the proper name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ConstituantElement</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">une partie du nom propre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#ConstituantElement</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ConstituantElement</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">a constituant element</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ConstituantElement</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">constituant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Context</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">a groupment of typical words (template) appearing with the proper name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Context</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Context</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">context</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Context</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">contexte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Derivative</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Derived from another thing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Derivative</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Dérivé d&apos;un autre élément</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Derivative</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Derivative</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Derivative</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Derivative</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Dérivé</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Derivative2</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Derived from another thing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Derivative2</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Dérivé d&apos;un autre élément</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Derivative2</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Derivative2</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Derivative</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Derivative2</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Dérivé</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DerivativeCategory</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">C&apos;est la catégorie d&apos;une dérivation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DerivativeCategory</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">repersents the category of a derivative</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#DerivativeCategory</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DerivativeCategory</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">cétégorie de dérivation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DerivativeCategory</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">derivative category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#EponymExpression</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Is top class for other types of eponymy and contains them</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#EponymExpression</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Sert de classe mère et contient tous les types d&apos;hyponymie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#EponymExpression</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#EponymExpression</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Eponym Expression</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#EponymExpression</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Expression Éponyme</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Existence</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Top level element for representing existence</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Existence</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Existence</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Existence</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Existence</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">existance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FunctionalWord</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">A word that goes with a proper name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FunctionalWord</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">mot accompagnant un nom propre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#FunctionalWord</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FunctionalWord</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">funtional word</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FunctionalWord</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">mot fonctionnel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#GrammaticalCategory</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">C&apos;est la nature d&apos;un mot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#GrammaticalCategory</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GrammaticalCategory</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Catégorie Grammaticale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GrammaticalCategory</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Grammatical Category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Idiom</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Expression Idiomatique: on l&apos;utilise quand le nom propre participe dans une phrase ou expression figée de la langue.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Idiom</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Idiom: In one language it may have some proper names used in fixed expressions.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Idiom</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Idiom</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Expression Idiomatique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Idiom</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Idiom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Instance</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Represents an instance of an Alias or Derivative in the language</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Instance</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Représente une insatance d&apos;un Alias ou d&apos;une Dérivative dans la langue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Instance</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Instance</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Instance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Instance</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Instance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Language</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Represents a language</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Language</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">une langue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Language</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Language</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Language</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Language</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Langue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Lemma</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Le prlexème est la projection d&apos;un nom propre dans une langue donnée.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Lemma</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The prolexem is the projection of a proper to a given language.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Lemma</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Lemma</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">prolexem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Lemma</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">prolexème</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#LexicalEntry</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Something that accepts derivatives</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#LexicalEntry</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">quelqeu chose que l&apos;on peut dériver</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#LexicalEntry</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#LexicalEntry</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Derivable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#LexicalEntry</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Dérivable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Morphology</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Informations like gender or the number</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Morphology</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Informations telle que le genre et le nombre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Morphology</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Morphology</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">morphologie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Morphology</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">morphology</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Phonetics</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Il est important surtout pour des mots dans d&apos;autres langue dont on ne possède pas la transcription dans un script donné</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Phonetics</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Phonetics</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Phonetics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Phonetics</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Transcription phonétique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Pivot</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">This class is to represent central concept of a proper name.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Pivot</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Pivot</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Pivot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Pivot</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Pivot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PropernameHypernym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Classe regroupant tous les types et supertypes de pivot.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PropernameHypernym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">in this class we have all types and supertypes of pivots</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#PropernameHypernym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PropernameHypernym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Hypernyme du nom propre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PropernameHypernym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Proper name hypernym</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ReliabilityCode</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">It&apos;s for measuring the frequency of a word (commontly used, frequently used and rarely used).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ReliabilityCode</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Mesure la fréquence</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#ReliabilityCode</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ReliabilityCode</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">fréquence d&apos;utilisation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ReliabilityCode</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">reliability code</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SynSet</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SynSet</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">a collection of synomous pivots</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SynSet</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">regroupe des pivots synonymes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SynSet</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">SynSet</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SynSet</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">SynSet</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Template</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">In a context, the template permits to fill a phrase.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Template</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Template</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">modèle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Template</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">template</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Terminology</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Terminologie: utilisé quand le nom propre entre en jeu dans la terminologie d&apos;un domaine donné.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Terminology</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Terminology: used when a proper name is concerned in a terminology of a given domain</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#Terminology</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Terminology</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Terminologie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Terminology</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Terminology</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#accessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Permet de dire qu&apos;un pivot est accessible à partir d&apos;un autre. Elle est aussi utilisée pour lier un prolexème à une phrase explicative découlant d&apos;un autre nom propre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#accessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">To tell that a pivot is accessibe via another one. It&apos;s also used to link a Prolexem to an explicative phrase provided with another prroper name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#accessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#accessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#accessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#antonomasia</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Spécifie qu&apos;un nom commun porte ce nom propre.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#antonomasia</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">specifies that a common name is nammed with the proper name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#antonomasia</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#antonomasia</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">antonomasia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#antonomasia</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">antonomasie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#argument</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">links to the lexical entry that completes the accessibility (on the linguistic level)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#argument</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">permet de faire référence à l&apos;entrée lexicale qui complète une accessibilité (niveau linguitique)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#argument</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#argument</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">argument cible</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#argument</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">referred argument (lexical entry)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#canonicPivot</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#canonicPivot</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Désigne le pivot canonique d&apos;un synset.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#canonicPivot</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">indicates the canonic pivot of a synset.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#canonicPivot</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">canonic pivot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#canonicPivot</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">pivot canonique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#capital</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Les toponymes et leurs capitales : Paris est la capitale de la France Orléans est la capitale régionale de la Région Centre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#capital</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#capital</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">capital</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#capital</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">capitale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#capitalAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#capitalAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par capitale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#capitalAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">capital accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#category</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Says that an categorizable element is in some category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#category</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">permet de dire qu&apos;un élément catégorisable est de telle catégorie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#category</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#category</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">categorie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#category</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#classification</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Lie un prolexème à une entité Classification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#classification</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">links between a prolexem and a Classification element</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#classification</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#classification</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">classification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#classification</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">classification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#collocation</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">lie un prolexème ou un alias à un mot pour faire une collocation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#collocation</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">links between a prolexeme or an alias with another qord to make collocation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#collocation</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#collocation</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">collocation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#collocation</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">collocation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#companion</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Patrocle est l&apos;ami d&apos;Achille</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#companion</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#companion</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">compagnon</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#companion</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">companion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#companionAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#companionAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par compagnon</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#companionAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">companion accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#constituant</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Gives the corresponding part of the proper name to use for classification or another selection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#constituant</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">permet de préciser quelle partie du nom propre est concernée par une classification ou une sélection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#constituant</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#constituant</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">constituant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#constituant</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">constituant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#context</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">gives the context of a classification or an accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#context</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">renseigne le contexte d&apos;une classification ou d&apos;une accessibilité.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#context</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#context</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">context</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#context</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">contexte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#creator</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Wolfgang Amadeus Mozart est le compositeur de La flûte enchantée Auguste Rodin est le sculteur du Penseur</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#creator</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#creator</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">creator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#creator</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">créateur</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#creatorAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#creatorAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par créateur</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#creatorAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">creator accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#diachronicSynonym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Synonyme par changement de nom : Le Za</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#diachronicSynonym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#diachronicSynonym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">diacrhonic synonymy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#diachronicSynonym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">synonymie diachronique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#diaphasicSynonym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Synonyme stylistique : Cité des lumières pour dire Paris</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#diaphasicSynonym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#diaphasicSynonym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">diaphasic synonymy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#diaphasicSynonym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">synonymie diaphasique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#diastraticSynonym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Synonyme savant: courant Humboldt pour courant du P</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#diastraticSynonym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#diastraticSynonym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">diastratic synonymy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#diastraticSynonym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">synonymie diastratique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#entry</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Links the prolexeme to one of its lexical entries</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#entry</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Relation qui lie un prolexème à une de ses entrée lexicale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#entry</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#entry</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">entry</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#entry</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">entrée</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#eponym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">gives an expression that contains the proper name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#eponym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">relie le prolexème à une expression contenant le nom propre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#eponym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#eponym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">eponym</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#eponym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">eponyme</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#existence</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">This relation links a pivot to its existence</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#existence</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">relie unb pivot à son existance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#existence</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#existence</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">existance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#existence</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">existence</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#follower</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Alcibiade est l&apos;élève de Socrate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#follower</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#follower</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">follower</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#follower</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">élève</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#followerAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#followerAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par élève</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#followerAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">follower accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#founder</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Pierre de Coubertin est l&apos;inventeur des Jeux Olympiques</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#founder</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#founder</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">fondateur</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#founder</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">founder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#founderAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#founderAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">acessibilité par fondateur</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#founderAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">founder accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#frequency</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Donne la fréquence d&apos;utilisation d&apos;un prolexeème</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#frequency</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Gives the frequency (reliability code) of a prolexem in that given language</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#frequency</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#frequency</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">frequence</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#frequency</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">frequency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasAlias</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">indicates that a prolexem has an alias</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasAlias</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">précise qu&apos;un prolexème à un alias donné.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#hasAlias</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasAlias</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">alias</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasAlias</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">alias</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasDerivative</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">attache un mot dérivé d&apos;un prolexème,un alias ou un autre dérivé</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasDerivative</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">gives a derivative of a prolexem , an alias or another derivative</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#hasDerivative</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDerivative</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">derivative</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDerivative</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">dérivé</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#headquaters</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Clermont-Ferrand est le siège de Michelin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#headquaters</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#headquaters</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">headquaters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#headquaters</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">siège</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#headquatersAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#headquatersAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par siège</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#headquatersAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">headquarters accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#heir</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#heir</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">heir</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#heir</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">héritier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#heirAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#heirAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par héritier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#heirAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">heir accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#holonyme</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Pour dire que pivot source est contenu sémantiquement dans un autre pivot cible</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#holonyme</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Tells that a pivot is semantically contained in another one.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#holonyme</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#holonyme</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">holonym</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#holonyme</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">holonyme</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hypernym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Tells that a pivot or a type admit some as supertype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hypernym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">dire qu&apos;un pivot ou un type a un tel comme supertype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#hypernym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hypernym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">can be</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hypernym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">peut être de type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#hyponym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hyponym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">hyponym</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hyponym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">hyponyme</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#idiom</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">dis qu&apos;un nom propre est contenu dans une expression idiomatique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#idiom</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">tells that a proper name is in an idiom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#idiom</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#idiom</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">idiom relationship</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#idiom</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">relation vers une expression idiomatique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#instance</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">links to one instance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#instance</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">relie à une instance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#instance</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#instance</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">instance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#instance</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">instance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#isAliasOf</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#isDerivativeOf</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#isEntryOf</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#isProlexemeOf</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#language</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">détermine la langue d&apos;un prolexem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#language</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">tells th elanguage of a prolexem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#language</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#language</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">language</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#language</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">langue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#leader</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Les hommes politiques et les institutions dépendantes d&apos;un toponyme : Président de la République, chancelier, roi, ministre...</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#leader</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#leader</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Dirigeant politique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#leader</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">leader</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#leaderAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par dirigeant politique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#leaderAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#leaderAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">leader accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#manager</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Les dirigeants d&apos;un anthroponyme collectif : Entreprise, association, parti politique, institution, organisation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#manager</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#manager</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">dirigeant non politique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#manager</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">manager</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#managerAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#managerAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">acessibilité par dirigeant non politique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#managerAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">manager accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#member</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Permet de dire qu&apos;un pivot est membre d&apos;un synset</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#member</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Tells that a pivot is member of a synset</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#member</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#member</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">member</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#member</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">membre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#meronym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Pour dire qu&apos;un pivot contient sémantiquement un autre</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#meronym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#meronym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">meronym</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#meronym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">méronyme</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#morphology</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">gives the morpology</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#morphology</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">indique la morphologie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#morphology</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#morphology</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">morphologie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#morphology</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">morphology</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#partOfSpeech</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Links between an element and it&apos;s grammatical category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#partOfSpeech</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Relie un élément à sa catégorie grammaticale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#partOfSpeech</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#partOfSpeech</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">catégorie grammaticale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#partOfSpeech</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">part of speech</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#phonetics</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral"></Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#phonetics</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#phonetics</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">phonetics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#phonetics</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">transcription phonétique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#pivot</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">links a prolexem to its pivot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#pivot</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">relie un prolexème à son pivot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#pivot</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#pivot</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">pivot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#pivot</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">pivot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#primaryHypernym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Cette relation représente l&apos;ypéronymie principale. Elle permet à la fois de lier des supertypes mais aussi un pivot à son type.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#primaryHypernym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">This is the primary hypernym. It links a pivot or a type to its supertype.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#primaryHypernym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#primaryHypernym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">hypernym</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#primaryHypernym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">hypernym</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#prolexeme</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">links a pivot to one of its prolexems</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#prolexeme</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">relation qui relie un pivot à un de ses prolexèmes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#prolexeme</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#prolexeme</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">prolexem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#prolexeme</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">prolexème</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#quasiSynonym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#quasiSynonym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">quasi-synonymie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#quasiSynonym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">quasi-synonymy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#relative</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Les personnes et les membres de leur famille : Aaron est le frère de Moïse Georges  W. Bush est le fils de Georges H. Bush</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#relative</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#relative</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Parent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#relative</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">relative</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#relativeAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#relativeAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par parenté</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#relativeAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">relative accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#rival</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Strozzi était rival des Médicis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#rival</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#rival</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">rival</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#rival</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">rival</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#rivalAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#rivalAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par rival</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#rivalAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">rival accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#secondaryHypernym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Hypéronymie secondaire entre certains supertypes.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#secondaryHypernym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The secondary hypernym is betwen some supertypes that are not linked hierarchically by the hypernym (primary) relationship.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#secondaryHypernym</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#secondaryHypernym</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">hypéronymie secondaire</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#secondaryHypernym</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">secondary hypernym</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#sorting</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">links to the more significant element for the sorting</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#sorting</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">relie à l&apos;élément significatif dans le tri (pour retrouver l&apos;ordre lexicographique)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#sorting</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#sorting</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">ordre de tri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#sorting</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">sorting element</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#template</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">links a context to the template of creating the explanation phrase.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#template</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">relie un contexte au modèle de remplissage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#template</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#template</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">modèle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#template</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">template</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#tenant</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Jacques Chirac est le locataire de l&apos;Elysée</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#tenant</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#tenant</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">locataire</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#tenant</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">tenant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#tenantAccessible</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#tenantAccessible</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">accessibilité par locataire</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#tenantAccessible</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">tenant accessibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#terminology</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">realtion pour dire qu&apos;un nom propre est utilisée dans la terminologie d&apos;un domaine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#terminology</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">this relation is when the proper name is used as a terminology for a given domain</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#terminology</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#terminology</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">terminologie</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#terminology</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">terminology</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#type</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Permet de donner la typologie d&apos;un pivot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#type</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Tells tha a Pivot is in some type of propername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>#type</IRI>
+        <IRI></IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#type</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#type</IRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">type</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

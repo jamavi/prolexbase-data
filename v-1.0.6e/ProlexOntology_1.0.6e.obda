@@ -1,0 +1,279 @@
+[PrefixDeclaration]
+:		http://www.univ-tours.fr/li/Prolex/Ontology#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace#
+xsd:		http://www.w3.org/2001/XMLSchema#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+skos:		http://www.w3.org/2004/02/skos/core#
+prolex:		http://www.univ-tours.fr/li/Prolex/data/
+
+[SourceDeclaration]
+sourceUri	Prolexbase
+connectionUrl	jdbc:mysql://localhost/ProlexbaseV1
+username	root
+password	dattebayo88fr
+driverClass	com.mysql.jdbc.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	mapping--ProperName
+target		:{ENG_TYPE} a :PropernameHypernym ; rdfs:label {ENG_TYPE}@en , {FRA_TYPE}@fr ; rdfs:comment {NOTE} . 
+source		SELECT FRA_TYPE, ENG_TYPE, NOTE FROM type
+
+mappingId	mapping--ProperName-PrimaryHypernym
+target		:{ENG_TYPE} :primaryHypernym :{ENG_TYPE2} . 
+source		SELECT t1.ENG_TYPE, t2.ENG_TYPE AS ENG_TYPE2 FROM type t1, type t2 WHERE t1.NUM_SUPERTYPE =t2.NUM_TYPE
+
+mappingId	mapping--ProperName-SecondaryHypernym
+target		:{ENG_TYPE} :secondaryHypernym :{ENG_TYPE2} . 
+source		SELECT t1.ENG_TYPE, t2.ENG_TYPE AS ENG_TYPE2 FROM hyponymy2 h, type t1, type t2 WHERE h.NUM_TYPE=t1.NUM_TYPE AND h.NUM_SUPERTYPE=t2.NUM_SUPERTYPE
+
+mappingId	mapping-Existence
+target		:{ENG_EXISTENCE}Existence a :Existence ; rdfs:comment {NOTE} ; rdfs:label {ENG_EXISTENCE}@en , {FRA_EXISTENCE}@fr . 
+source		SELECT FRA_EXISTENCE, ENG_EXISTENCE, NOTE FROM existence
+
+mappingId	mapping--SenseAxis
+target		prolex:pivot/{NUM_PIVOT} a :SenseAxis ; :existence :{ENG_EXISTENCE}Existence . 
+source		SELECT p.NUM_PIVOT, e.ENG_EXISTENCE FROM  pivot2 p, existence e WHERE p.NUM_EXISTENCE=e.NUM_EXISTENCE
+
+mappingId	mapping--SenseAxis-2
+target		prolex:pivot/{NUM_PIVOT2} a :SenseAxis . 
+source		SELECT p.NUM_PIVOT as NUM_PIVOT2 FROM  pivot2 p
+
+mappingId	mapping-SynSet
+target		prolex:synset/{NUM_PIVOT} a :SynSet ; :member prolex:pivot/{NUM_PIVOT2} ; :canonicPivot prolex:pivot/{NUM_PIVOT} . 
+source		(SELECT s.NUM_CANONICAL_PIVOT AS NUM_PIVOT, s.NUM_SYNONYMOUS_PIVOT AS NUM_PIVOT2 FROM synonymy s WHERE s.NUM_CANONICAL_PIVOT NOT IN (SELECT NUM_SYNONYMOUS_PIVOT FROM synonymy)) UNION (SELECT c.NUM_CANONICAL_PIVOT AS NUM_PIVOT, s.NUM_SYNONYMOUS_PIVOT AS NUM_PIVOT2 FROM synonymy s, synonymy c WHERE s.NUM_CANONICAL_PIVOT=c.NUM_SYNONYMOUS_PIVOT)
+
+mappingId	mapping--SenseAxis-ProperName
+target		prolex:pivot/{NUM_PIVOT} :type :{ENG_TYPE} . 
+source		SELECT p.NUM_PIVOT, t.ENG_TYPE FROM pivot2 p, type t WHERE p.NUM_TYPE=t.NUM_TYPE
+
+mappingId	mapping-SenseAxis-relativeAccessible
+target		prolex:pivot/{NUM_PIVOT} :relativeAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 2
+
+mappingId	mapping-SenseAxis-creatorAccessible
+target		prolex:pivot/{NUM_PIVOT} :creatorAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 3
+
+mappingId	mapping-SenseAxis-capitalAccessible
+target		prolex:pivot/{NUM_PIVOT} :capitalAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 4
+
+mappingId	mapping-SenseAxis-leaderAccessible
+target		prolex:pivot/{NUM_PIVOT} :leaderAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 5
+
+mappingId	mapping-SenseAxis-managerAccessible
+target		prolex:pivot/{NUM_PIVOT} :managerAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 7
+
+mappingId	mapping-SenseAxis-tenantAccessible
+target		prolex:pivot/{NUM_PIVOT} :tenantAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 8
+
+mappingId	mapping-SenseAxis-founderAccessible
+target		prolex:pivot/{NUM_PIVOT} :founderAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 9
+
+mappingId	mapping-SenseAxis-heirAccessible
+target		prolex:pivot/{NUM_PIVOT} :heirAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 10
+
+mappingId	mapping-SenseAxis-followerAccessible
+target		prolex:pivot/{NUM_PIVOT} :followerAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 11
+
+mappingId	mapping-SenseAxis-headquartersAccessible
+target		prolex:pivot/{NUM_PIVOT} :headquartersAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 12
+
+mappingId	mapping-SenseAxis-rivalAccessible
+target		prolex:pivot/{NUM_PIVOT} :rivalAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 13
+
+mappingId	mapping-SenseAxis-companionAccessible
+target		prolex:pivot/{NUM_PIVOT} :companionAccessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2   FROM accessibility a WHERE a.NUM_SUBJECTFILE= 14
+
+mappingId	mapping--SenseAxisMeronym
+target		prolex:pivot/{NUM_PIVOT} :hasMeronym prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_HOLONYMOUS_PIVOT AS NUM_PIVOT, NUM_MERONYMOUS_PIVOT AS NUM_PIVOT2 FROM meronymy
+
+mappingId	mapping--SenseAxis-Synonym
+target		prolex:pivot/{NUM_PIVOT} :quasiSynonym prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_CANONICAL_PIVOT AS NUM_PIVOT, NUM_SYNONYMOUS_PIVOT AS NUM_PIVOT2  FROM synonymy s WHERE s.NUM_DIASYSTEM=0
+
+mappingId	mapping--SenseAxis-diastraticSynonym
+target		prolex:pivot/{NUM_PIVOT} :diastraticSynonym prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_CANONICAL_PIVOT AS NUM_PIVOT, NUM_SYNONYMOUS_PIVOT AS NUM_PIVOT2 FROM synonymy s WHERE s.NUM_DIASYSTEM=2
+
+mappingId	mapping--SenseAxis-diachronicSynonym
+target		prolex:pivot/{NUM_PIVOT} :diachronicSynonym prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_CANONICAL_PIVOT AS NUM_PIVOT, NUM_SYNONYMOUS_PIVOT AS NUM_PIVOT2  FROM synonymy s WHERE s.NUM_DIASYSTEM=3
+
+mappingId	mapping--SenseAxis-diaphasicSynonym
+target		prolex:pivot/{NUM_PIVOT} :diaphasicSynonym prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_CANONICAL_PIVOT AS NUM_PIVOT, NUM_SYNONYMOUS_PIVOT AS NUM_PIVOT2  FROM synonymy s WHERE s.NUM_DIASYSTEM=4
+
+mappingId	mapping--Lexicon
+target		prolex:language/{LANGUAGE_NAME} a :Lexicon ; :languageIdentifier {ISO_CODE} ; :script {SCRIPT2} , {SCRIPT1} ; rdfs:seeAlso {WIKIPEDIA_LINK} ; rdfs:label {FRA_LANGUAGE}@fr , {LANGUAGE_NAME}@en . 
+source		SELECT FRA_LANGUAGE, ISO_CODE, ENG_LANGUAGE, ENG_LANGUAGE AS LANGUAGE_NAME, WIKIPEDIA_LINK, SCRIPT1, SCRIPT2 FROM language
+
+mappingId	MAPID-ReliabilityCode
+target		prolex:reliability-code/{ENG_FREQUENCY} a :ReliabilityCode ; rdfs:label {FRA_FREQUENCY}@fr , {ENG_FREQUENCY}@en . 
+source		SELECT FRA_FREQUENCY, ENG_FREQUENCY from frequency
+
+mappingId	mapping--Canonical
+target		prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} a :Canonical ; :hasSenseAxis prolex:pivot/{NUM_PIVOT} ; rdfs:label {LABEL_PROLEXEME} ; :hasLexicon prolex:language/{LANGUAGE_NAME} ; :sorting prolex:constituant-element/{NUM_CONSTITUANT} ; rdfs:seeAlso {WIKIPEDIA_LINK} . 
+source		SELECT LABEL_PROLEXEME, SORT AS NUM_CONSTITUANT, WIKIPEDIA_LINK, NUM_PROLEXEME AS NUM_CANONICAL, LABEL_PROLEXEME AS LABEL_CANONICAL, NUM_PIVOT, ENG_LANGUAGE AS LANGUAGE_NAME FROM prolexeme_fra p, language l where p.NUM_LANGUAGE = l.NUM_LANGUAGE
+
+mappingId	mapping--Canonical-ReliabilityCode
+target		prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} :frequency prolex:reliability-code/{ENG_FREQUENCY} . 
+source		SELECT NUM_PROLEXEME AS NUM_CANONICAL, LABEL_PROLEXEME AS LABEL_CANONICAL,  ENG_FREQUENCY FROM prolexeme_fra p, frequency f where p.num_frequency = f.num_frequency
+
+mappingId	mapping-AliasCategory
+target		prolex:alias-category/{ENG_CATEGORY} a :AliasCategory ; rdfs:comment {NOTE} ; rdfs:label {ENG_CATEGORY}@en , {FRA_CATEGORY}@fr . 
+source		SELECT * FROM alias_category
+
+mappingId	mapping-Alias
+target		prolex:entry/fra/alias/{NUM_ALIAS}-{LABEL_ALIAS} a :Alias ; :category prolex:alias-category/{ENG_CATEGORY} ; rdfs:label {LABEL_ALIAS} . 
+source		SELECT a.LABEL_ALIAS, ac.ENG_CATEGORY, a.NUM_ALIAS FROM alias_fra a, alias_category ac where a.NUM_CATEGORY=ac.NUM_CATEGORY
+
+mappingId	mapping-Alias-Canonical
+target		prolex:entry/fra/alias/{NUM_ALIAS}-{LABEL_ALIAS} :isAliasOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; :hasSenseAxis prolex:pivot/{NUM_PIVOT} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT p.LABEL_PROLEXEME AS LABEL_CANONICAL, a.LABEL_ALIAS, a.NUM_PROLEXEME AS NUM_CANONICAL, NUM_ALIAS, p.NUM_PIVOT, ENG_LANGUAGE as LANGUAGE_NAME FROM alias_fra a, prolexeme_fra p, language l  WHERE p.NUM_PROLEXEME=a.NUM_PROLEXEME and p.num_language = l.num_language
+
+mappingId	mapping-AliasizationResult
+target		prolex:entry/fra/aliasization/{NUM_ALIASIZATION_RESULT}-{LABEL_LEMMA} a :Alias ; :category prolex:alias-category/{ENG_CATEGORY} ; rdfs:label {LABEL_LEMMA} . 
+source		SELECT ar.NUM_ALIASIZATION_RESULT, ar.LABEL_LEMMA, ac.ENG_CATEGORY FROM aliasization_result_fra ar, alias_category ac WHERE ar.NUM_CATEGORY=ac.NUM_CATEGORY
+
+mappingId	mapping-AliasizationResult-Canonical
+target		prolex:entry/fra/aliasization/{NUM_ALIASIZATION_RESULT}-{LABEL_LEMMA} :isAliasOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; :hasSenseAxis prolex:pivot/{NUM_PIVOT} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT p.LABEL_PROLEXEME AS LABEL_CANONICAL, a.LABEL_LEMMA, p.NUM_PROLEXEME AS NUM_CANONICAL, a.NUM_ALIASIZATION_RESULT, p.NUM_PIVOT, ENG_LANGUAGE as LANGUAGE_NAME FROM aliasization_result_fra a, prolexeme_fra p, language l  WHERE  p.NUM_PROLEXEME=a.NUM_PROLEXEME and p.num_language = l.num_language
+
+mappingId	mapping--DerivativeCategory
+target		prolex:derivative-category/{ENG_CATEGORY} a :DerivativeCategory ; :hasPartOfSpeech prolex:part-of-speech/{ENG_POS} ; rdfs:comment {NOTE} ; rdfs:label {FRA_CATEGORY}@fr , {ENG_CATEGORY}@en . 
+source		SELECT dc.FRA_CATEGORY, dc.ENG_CATEGORY, dc.NOTE, pos.ENG_POS FROM derivative_category dc, part_of_speech pos WHERE dc.NUM_POS=pos.NUM_POS
+
+mappingId	mapping-Derivative
+target		prolex:entry/fra/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE} a :Derivative ; rdfs:label {LABEL_DERIVATIVE} ; :category prolex:derivative-category/{ENG_CATEGORY} . 
+source		SELECT d.LABEL_DERIVATIVE, dc.ENG_CATEGORY, NUM_DERIVATIVE FROM derivative_fra d, derivative_category dc  where d.NUM_CATEGORY=dc.NUM_CATEGORY
+
+mappingId	mapping--Derivative-Canonical
+target		prolex:entry/fra/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE} :isDerivativeOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; :hasSenseAxis prolex:pivot/{NUM_PIVOT} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT NUM_DERIVATIVE, d.LABEL_DERIVATIVE, d.NUM_PROLEXEME AS NUM_CANONICAL,  p.LABEL_PROLEXEME AS LABEL_CANONICAL, p.NUM_PIVOT, ENG_LANGUAGE as LANGUAGE_NAME FROM derivative_fra d, prolexeme_fra p,  language l WHERE p.NUM_PROLEXEME=d.NUM_ETYMOLOGY and p.num_language = l.num_language and TABLE_ETYMOLOGY = 'prolexeme'
+
+mappingId	mapping--Derivative-Alias
+target		prolex:entry/fra/alias/{NUM_ALIAS}-{LABEL_ALIAS} :hasDerivative prolex:entry/fra/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE} . 
+source		SELECT NUM_DERIVATIVE, d.LABEL_DERIVATIVE, a.NUM_ALIAS, a.LABEL_ALIAS FROM derivative_fra d, alias_fra a WHERE TABLE_ETYMOLOGY = 'alias' AND a.NUM_ALIAS=d.NUM_ETYMOLOGY
+
+mappingId	mapping-Derivative-Derivative
+target		prolex:entry/fra/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE} :isDerivativeOf prolex:entry/fra/derivative/{NUM_DERIVATIVE2}-{LABEL_DERIVATIVE2} . 
+source		SELECT  d.NUM_DERIVATIVE AS NUM_DERIVATIVE, d.LABEL_DERIVATIVE AS LABEL_DERIVATIVE, d2.NUM_DERIVATIVE AS NUM_DERIVATIVE2, d2.LABEL_DERIVATIVE AS LABEL_DERIVATIVE2 FROM derivative_fra d, derivative_fra d2 WHERE d.TABLE_ETYMOLOGY='derivative' AND d2.NUM_DERIVATIVE=d.NUM_ETYMOLOGY
+
+mappingId	mapping-CollocationCategory
+target		prolex:collocation-category/{ENG_CATEGORY} a :CollocationCategory ; rdfs:comment {NOTE} ; rdfs:label {FRA_CATEGORY}@fr , {ENG_CATEGORY}@en . 
+source		SELECT FRA_CATEGORY, ENG_CATEGORY, NOTE FROM collocation_category
+
+mappingId	mapping--FunctionalWord
+target		prolex:functional-word/fra/{LABEL_COLLOCATION} a :FunctionalWord ; :category prolex:collocation-category/{ENG_CATEGORY} ; rdfs:label {LABEL_COLLOCATION} . 
+source		SELECT ENG_CATEGORY, LABEL_COLLOCATION FROM collocation_category cc,  collocation_fra c WHERE c.NUM_CATEGORY=cc.NUM_CATEGORY
+
+mappingId	mapping-Canonical-Collocation
+target		prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} :hasCollocation prolex:functional-word/fra/{LABEL_COLLOCATION} . 
+source		SELECT LABEL_PROLEXEME AS LABEL_CANONICAL, LABEL_COLLOCATION, p.NUM_PROLEXEME AS NUM_CANONICAL  FROM collocation_prolexeme_fra cp, collocation_fra c, prolexeme_fra p WHERE cp.NUM_COLLOCATION=c.NUM_COLLOCATION AND cp.NUM_PROLEXEME=p.NUM_PROLEXEME
+
+mappingId	mapping-Alias-Collocation
+target		prolex:entry/fra/alias/{NUM_ALIAS}-{LABEL_ALIAS} :hasCollocation prolex:functional-word/fra/{LABEL_COLLOCATION} . 
+source		SELECT LABEL_ALIAS, LABEL_COLLOCATION, a.NUM_ALIAS  FROM collocation_alias_fra ca, collocation_fra c, alias_fra a WHERE ca.NUM_COLLOCATION=c.NUM_COLLOCATION AND ca.NUM_ALIAS=a.NUM_ALIAS
+
+mappingId	mapping-Morphology
+target		prolex:morphology/fra/{MORPHOLOGY_NAME} a :Morphology ; :grammaticalNumber {NUMBER} ; :grammaticalGender {GENDER} . 
+source		SELECT ABBREVIATION AS MORPHOLOGY_NAME, GENDER, NUMBER FROM morphology_fra
+
+mappingId	mapping--ClassifyingContext
+target		prolex:classifying-context/fra/{NUM_CONTEXT}-{LABEL_CONTEXT} a :ClassifyingContext ; :hasMorphology prolex:morphology/fra/{MORPHOLOGY_NAME} ; :hasTemplate {LABEL_CLASSIFYING_CONTEXT} . 
+source		SELECT NUM_CONTEXT, LABEL_CLASSIFYING_CONTEXT as LABEL_CONTEXT, ABBREVIATION AS MORPHOLOGY_NAME FROM vue_classifying_context_fra v, morphology_fra m WHERE  v.NUM_MORPHOLOGY=m.NUM_MORPHOLOGY
+
+mappingId	mapping--Classification
+target		prolex:classification/fra/{NUM_CLASSIFICATION} a :Classification ; :hasContext prolex:classifying-context/fra/{NUM_CONTEXT}-{LABEL_CONTEXT} ; :hasConstituant prolex:constituant-element/{NUM_CONSTITUANT} . 
+source		SELECT NUM_CLASSIFYING_CONTEXT AS NUM_CLASSIFICATION, NUM_CONTEXT, v.LABEL_CLASSIFYING_CONTEXT as LABEL_CONTEXT, RESTRICTION AS NUM_CONSTITUANT FROM classifying_context_fra cc, vue_classifying_context_fra v where cc.LABEL_CLASSIFYING_CONTEXT=v.LABEL_CLASSIFYING_CONTEXT
+
+mappingId	mapping--Canonical-Classification
+target		prolex:classification/fra/{NUM_CLASSIFICATION} :isClassificationOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} . 
+source		SELECT cc.NUM_CLASSIFYING_CONTEXT AS NUM_CLASSIFICATION, LABEL_PROLEXEME AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL   FROM context_fra c, prolexeme_fra p, classifying_context_fra cc WHERE p.NUM_PROLEXEME=c.NUM_PROLEXEME and c.NUM_CLASSIFYING_CONTEXT=cc.NUM_CLASSIFYING_CONTEXT
+
+mappingId	mapping-AccessibilityContext
+target		prolex:accessibility-context/fra/{NUM_CONTEXT} a :AccessibilityContext ; :hasMorphology prolex:morphology/fra/{MORPHOLOGY_NAME} ; :hasTemplate {LABEL_ACCESSIBILITY_CONTEXT} . 
+source		SELECT NUM_CONTEXT, v.LABEL_ACCESSIBILITY_CONTEXT, ABBREVIATION AS MORPHOLOGY_NAME FROM vue_accessibility_context_fra v , morphology_fra m WHERE v.NUM_MORPHOLOGY=m.NUM_MORPHOLOGY
+
+mappingId	mapping--Accessibility
+target		prolex:accessibility/fra/{NUM_ACCESSIBILITY} a :Accessibility ; :hasContext prolex:accessibility-context/fra/{NUM_CONTEXT} ; :hasConstituant prolex:constituant-element/{NUM_CONSTITUANT} . 
+source		SELECT NUM_ACCESSIBILITY, NUM_CONTEXT, RESTRICTION as NUM_CONSTITUANT  FROM accessibility_fra a, accessibility_context_fra ac,  vue_accessibility_context_fra v where a.NUM_ACCESSIBILITY_CONTEXT = ac.NUM_ACCESSIBILITY_CONTEXT and ac.LABEL_ACCESSIBILITY_CONTEXT=v.LABEL_ACCESSIBILITY_CONTEXT
+
+mappingId	mapping--Accessibility-Canonical
+target		prolex:accessibility/fra/{NUM_ACCESSIBILITY} :isAccessibilityOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} . 
+source		SELECT af.NUM_ACCESSIBILITY_CONTEXT, af.NUM_ACCESSIBILITY, p.NUM_PROLEXEME AS NUM_CANONICAL, p.LABEL_PROLEXEME AS LABEL_CANONICAL FROM accessibility_fra af, prolexeme_fra p WHERE af.NUM_PROLEXEME=p.NUM_PROLEXEME
+
+mappingId	mapping--Accessibility-Canonical-2
+target		prolex:accessibility/fra/{NUM_ACCESSIBILITY} :referredLexicalEntry prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} . 
+source		SELECT af.NUM_ACCESSIBILITY_CONTEXT, af.NUM_ACCESSIBILITY, p.NUM_PROLEXEME AS NUM_CANONICAL, p.LABEL_PROLEXEME AS LABEL_CANONICAL FROM accessibility_fra af, accessibility a, prolexeme_fra p WHERE af.NUM_ACCESSIBILITY=a.NUM_ACCESSIBILITY AND a.NUM_ARGUMENT2_PIVOT=p.NUM_PIVOT
+
+mappingId	mapping-Canonical-Antonomasia
+target		prolex:eponymy/fra/{EPONYMY_TYPE}/{LABEL_EPONYMY} a :Antonomasia ; rdfs:label {LABEL_ANTONOMASIA} ; :isEponymOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT LABEL_ANTONOMASIA, LABEL_ANTONOMASIA AS LABEL_EPONYMY, 'antonomasia' AS EPONYMY_TYPE, LABEL_PROLEXEME AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL, ENG_LANGUAGE as LANGUAGE_NAME FROM prolexeme_fra p, antonomasia_fra a,  language l WHERE a.NUM_PROLEXEME=p.NUM_PROLEXEME and p.num_language = l.num_language
+
+mappingId	mapping-Canonical-Idiom
+target		prolex:eponymy/fra/{EPONYMY_TYPE}/{LABEL_EPONYMY} a :Idiom ; rdfs:label {LABEL_IDIOM} ; :isEponymOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT LABEL_IDIOM, LABEL_IDIOM AS LABEL_EPONYMY, 'idiom' AS EPONYMY_TYPE,  LABEL_PROLEXEME AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL, ENG_LANGUAGE as LANGUAGE_NAME FROM idiomatic_prolexeme_fra ip, prolexeme_fra p, idiom_fra i, language l  WHERE i.NUM_IDIOM=ip.NUM_IDIOM AND ip.NUM_PROLEXEME=p.NUM_PROLEXEME and p.num_language = l.num_language
+
+mappingId	mapping-Canonical-Terminology
+target		prolex:eponymy/fra/{EPONYMY_TYPE}/{LABEL_EPONYMY} a :Terminology ; rdfs:label {LABEL_TERMINOLOGY} ; :isEponymOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT LABEL_TERMINOLOGY, LABEL_TERMINOLOGY AS LABEL_EPONYMY, 'terminology' AS EPONYMY_TYPE, LABEL_PROLEXEME AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL, ENG_LANGUAGE as LANGUAGE_NAME FROM terminology_fra t, terminological_prolexeme_fra tp, prolexeme_fra p, language l WHERE t.NUM_TERMINOLOGY=tp.NUM_TERMINOLOGY AND tp.NUM_PROLEXEME=p.NUM_PROLEXEME and p.num_language = l.num_language
+
+mappingId	mapping-PartOfSpeech
+target		prolex:part-of-speech/{ENG_POS} a :PartOfSpeech ; rdfs:label {ENG_POS}@en , {FRA_POS}@fr . 
+source		SELECT FRA_POS, ENG_POS FROM part_of_speech
+
+mappingId	mapping-WordForm
+target		prolex:instance/fra/{NUM_INSTANCE}-{LABEL_INSTANCE} a :WordForm ; :hasPartOfSpeech prolex:part-of-speech/{ENG_POS} ; rdfs:label {LABEL_INSTANCE} . 
+source		SELECT NUM_INSTANCE, LABEL_INSTANCE, ENG_POS FROM instance_fra i, part_of_speech p WHERE p.NUM_POS=i.NUM_POS
+
+mappingId	mapping--WordForm-Morphology
+target		prolex:instance/fra/{NUM_INSTANCE}-{LABEL_INSTANCE} :hasMorphology prolex:morphology/fra/{MORPHOLOGY_NAME} . 
+source		SELECT NUM_INSTANCE, LABEL_INSTANCE, ABBREVIATION AS MORPHOLOGY_NAME FROM instance_fra i, morphology_fra m WHERE i.NUM_MORPHOLOGY=m.NUM_MORPHOLOGY
+
+mappingId	mapping--WordForm-Canonical
+target		prolex:instance/fra/{NUM_INSTANCE}-{LABEL_INSTANCE} :isInstanceOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT NUM_INSTANCE, LABEL_INSTANCE, LABEL_PROLEXEME AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL, ENG_LANGUAGE as LANGUAGE_NAME FROM instance_fra i, prolexeme_fra p, language l where p.NUM_PROLEXEME=i.NUM_PROLEXEME and p.NUM_LANGUAGE = l.NUM_LANGUAGE and  i.NUM_DERIVATIVE=0 and i.NUM_ALIAS=0 and num_aliasization_result=0 and num_derivation_result=0
+
+mappingId	mapping--WordForm-Alias
+target		prolex:instance/fra/{NUM_INSTANCE}-{LABEL_INSTANCE} :isInstanceOf prolex:entry/fra/alias/{NUM_ALIAS}-{LABEL_ALIAS} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT NUM_INSTANCE, LABEL_INSTANCE, a.LABEL_ALIAS, a.NUM_ALIAS, ENG_LANGUAGE as LANGUAGE_NAME FROM instance_fra i, alias_fra a, prolexeme_fra p, language l where a.NUM_ALIAS=i.NUM_ALIAS and a.NUM_PROLEXEME=p.NUM_PROLEXEME and p.NUM_LANGUAGE = l.NUM_LANGUAGE
+
+mappingId	mapping--WordForm-AliasizationResult
+target		prolex:instance/fra/{NUM_INSTANCE}-{LABEL_INSTANCE} :isInstanceOf prolex:entry/fra/aliasization/{NUM_ALIASIZATION_RESULT}-{LABEL_LEMMA} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT NUM_INSTANCE, LABEL_INSTANCE, a.LABEL_LEMMA,  a.NUM_ALIASIZATION_RESULT,  ENG_LANGUAGE as LANGUAGE_NAME FROM instance_fra i, aliasization_result_fra a, prolexeme_fra p, language l where a.NUM_ALIASIZATION_RESULT=i.NUM_ALIASIZATION_RESULT and a.NUM_PROLEXEME=p.NUM_PROLEXEME and p.NUM_LANGUAGE = l.NUM_LANGUAGE
+
+mappingId	mapping--WordForm-Derivative
+target		prolex:instance/fra/{NUM_INSTANCE}-{LABEL_INSTANCE} :isInstanceOf prolex:entry/fra/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT NUM_INSTANCE, LABEL_INSTANCE, d.LABEL_DERIVATIVE, d.NUM_DERIVATIVE, ENG_LANGUAGE as LANGUAGE_NAME FROM instance_fra i, derivative_fra d,  prolexeme_fra p, language l where  d.NUM_DERIVATIVE=i.NUM_DERIVATIVE and d.NUM_PROLEXEME=p.NUM_PROLEXEME and p.NUM_LANGUAGE = l.NUM_LANGUAGE
+
+mappingId	mapping--Lemma-Canonical
+target		prolex:instance/fra/canonical/{NUM_INSTANCE}-{LABEL_INSTANCE} a :Lemma ; rdfs:label {LABEL_INSTANCE} ; :hasLexicon prolex:language/{LANGUAGE_NAME} ; :isInstanceOf prolex:entry/fra/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} . 
+source		SELECT NUM_PROLEXEME AS NUM_CANONICAL, LABEL_PROLEXEME AS LABEL_CANONICAL,  p.NUM_PROLEXEME AS NUM_INSTANCE, p.LABEL_PROLEXEME AS LABEL_INSTANCE,  ENG_LANGUAGE AS LANGUAGE_NAME FROM prolexeme_fra p, language l where p.NUM_LANGUAGE = l.NUM_LANGUAGE
+
+mappingId	mapping-Lemma-Alias
+target		prolex:instance/fra/alias/{NUM_INSTANCE}-{LABEL_INSTANCE} a :Lemma ; rdfs:label {LABEL_INSTANCE} ; :isInstanceOf prolex:entry/fra/alias/{NUM_ALIAS}-{LABEL_ALIAS} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT NUM_ALIAS as NUM_INSTANCE, LABEL_ALIAS as LABEL_INSTANCE, a.LABEL_ALIAS, a.NUM_ALIAS, ENG_LANGUAGE as LANGUAGE_NAME FROM alias_fra a, prolexeme_fra p, language l  WHERE p.NUM_PROLEXEME=a.NUM_PROLEXEME and p.num_language = l.num_language
+
+mappingId	mapping-Lemma-AliasizationResult
+target		prolex:instance/fra/aliasization/{NUM_INSTANCE}-{LABEL_INSTANCE} a :Lemma ; rdfs:label {LABEL_INSTANCE} ; :isInstanceOf prolex:entry/fra/aliasization/{NUM_ALIASIZATION_RESULT}-{LABEL_LEMMA} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT NUM_ALIASIZATION_RESULT as NUM_INSTANCE, LABEL_LEMMA as LABEL_INSTANCE, a.LABEL_LEMMA,  a.NUM_ALIASIZATION_RESULT,  ENG_LANGUAGE as LANGUAGE_NAME FROM aliasization_result_fra a, prolexeme_fra p, language l  WHERE  p.NUM_PROLEXEME=a.NUM_PROLEXEME and p.num_language = l.num_language
+
+mappingId	mapping--Lemma-Derivative
+target		prolex:instance/fra/derivative/{NUM_INSTANCE}-{LABEL_INSTANCE} a :Lemma ; rdfs:label {LABEL_INSTANCE} ; :isInstanceOf prolex:entry/fra/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE} ; :hasLexicon prolex:language/{LANGUAGE_NAME} . 
+source		SELECT NUM_DERIVATIVE as NUM_INSTANCE, LABEL_DERIVATIVE as LABEL_INSTANCE,  d.NUM_DERIVATIVE, d.LABEL_DERIVATIVE, ENG_LANGUAGE as LANGUAGE_NAME FROM derivative_fra d, prolexeme_fra p,  language l WHERE p.NUM_PROLEXEME=d.NUM_PROLEXEME and p.num_language = l.num_language
+]]
+

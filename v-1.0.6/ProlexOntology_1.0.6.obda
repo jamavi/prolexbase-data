@@ -1,0 +1,167 @@
+[PrefixDeclaration]
+:		http://www.univ-tours.fr/li/Prolex/Ontology#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace#
+xsd:		http://www.w3.org/2001/XMLSchema#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+skos:		http://www.w3.org/2004/02/skos/core#
+prolex:		http://www.univ-tours.fr/li/Prolex/data/
+
+[SourceDeclaration]
+sourceUri	Prolexbase
+connectionUrl	jdbc:mysql://localhost/ProlexbaseV1
+username	root
+password	dattebayo88fr
+driverClass	com.mysql.jdbc.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	mapping-242974754
+target		prolex:entry/fr/alias/{NUM_ALIAS}-{LABEL_ALIAS2} a :Alias ; :collocation prolex:functional-word/fr/{LABEL_WORD} . 
+source		SELECT REPLACE(LABEL_ALIAS, ' ','_') AS LABEL_ALIAS2, REPLACE(LABEL_COLLOCATION, ' ','_') AS LABEL_WORD, a.NUM_ALIAS  FROM collocation_alias_fra ca, collocation_fra c, alias_fra a WHERE ca.NUM_COLLOCATION=c.NUM_COLLOCATION AND ca.NUM_ALIAS=a.NUM_ALIAS
+
+mappingId	mapping--1499586575
+target		prolex:classifying-context/fr/{NUM_CLASSIFYING_CONTEXT} a :ClassifyingContext ; :morphology prolex:morphology/fr/{MORPHOLOGY_NAME} ; :hasTemplate {LABEL_CLASSIFYING_CONTEXT} . 
+source		SELECT NUM_CLASSIFYING_CONTEXT, LABEL_CLASSIFYING_CONTEXT, ABBREVIATION AS MORPHOLOGY_NAME FROM classifying_context_fra cc, morphology_fra m WHERE cc.NUM_MORPHOLOGY=m.NUM_MORPHOLOGY
+
+mappingId	mapping-31258352
+target		prolex:pivot/{NUM_PIVOT} :{ENG_SUBJECTFILE}Accessible prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_ARGUMENT1_PIVOT AS NUM_PIVOT, NUM_ARGUMENT2_PIVOT AS NUM_PIVOT2, ENG_SUBJECTFILE  FROM accessibility a, subject_file s WHERE s.NUM_SUBJECTFILE=a.NUM_SUBJECTFILE
+
+mappingId	mapping-837323126
+target		prolex:part-of-speech/{ENG_POS} a :PartOfSpeech ; rdfs:label {ENG_POS}@en . 
+source		SELECT FRA_POS, ENG_POS FROM part_of_speech
+
+mappingId	mapping--1083203842
+target		prolex:entry/fr/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} a :Canonical ; :classification prolex:classification/fr/{NUM_CLASSIFICATION} . 
+source		SELECT NUM_CLASSIFYING_CONTEXT AS NUM_CLASSIFICATION, REPLACE(LABEL_PROLEXEME, ' ','_') AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL   FROM context_fra c, prolexeme_fra p WHERE p.NUM_PROLEXEME=c.NUM_PROLEXEME
+
+mappingId	mapping--644040851
+target		:{ENG_TYPE} :primaryHypernym :{ENG_TYPE2} . 
+source		SELECT t1.ENG_TYPE, t2.ENG_TYPE AS ENG_TYPE2 FROM type t1, type t2 WHERE t1.NUM_SUPERTYPE =t2.NUM_TYPE
+
+mappingId	mapping--590165900
+target		prolex:pivot/{NUM_PIVOT} :meronym prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_HOLONYMOUS_PIVOT AS NUM_PIVOT, NUM_MERONYMOUS_PIVOT AS NUM_PIVOT2 FROM meronymy
+
+mappingId	mapping-108823641
+target		prolex:entry/fr/alias/{NUM_ALIAS}-{LABEL_ALIAS2} a :Alias ; :category prolex:alias-category/{ENG_CATEGORY} ; :hasLexicon prolex:language/french ; rdfs:label {LABEL_ALIAS} . 
+source		SELECT a.LABEL_ALIAS, ac.ENG_CATEGORY, a.NUM_ALIAS, REPLACE(a.LABEL_ALIAS, ' ','_') AS LABEL_ALIAS2 FROM alias_fra a, alias_category ac where a.NUM_CATEGORY=ac.NUM_CATEGORY
+
+mappingId	mapping--755846495
+target		prolex:instence/fr/{NUM_INSTANCE}-{LABEL_INSTANCE} :isInstanceOf prolex:entry/fr/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE2} . 
+source		SELECT NUM_INSTANCE, REPLACE(LABEL_INSTANCE,' ','_') AS LABEL_INSTANCE, REPLACE(LABEL_DERIVATIVE,' ','_') AS LABEL_DERIVATIVE2, d.NUM_DERIVATIVE FROM instance_fra i, derivative_fra d where i.NUM_DERIVATIVE!=0 and d.NUM_DERIVATIVE=i.NUM_DERIVATIVE and NUM_ALIAS=0 and num_aliasization_result=0 and num_derivation_result=0
+
+mappingId	mapping-401445056
+target		prolex:entry/fr/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} a :Alias ; :isAliasOf prolex:entry/fr/alias/{NUM_ALIAS}-{LABEL_ALIAS2} ; :hasSenseAxis prolex:pivot/{NUM_PIVOT} . 
+source		SELECT REPLACE(p.LABEL_PROLEXEME, ' ','_') AS LABEL_CANONICAL, REPLACE(a.LABEL_ALIAS, ' ','_') AS LABEL_ALIAS2, a.NUM_PROLEXEME AS NUM_CANONICAL, NUM_ALIAS, p.NUM_PIVOT FROM alias_fra a, prolexeme_fra p WHERE p.NUM_PROLEXEME=a.NUM_PROLEXEME
+
+mappingId	mapping--850789762
+target		:{ENG_TYPE} a :PropernameHypernym ; rdfs:label {FRA_TYPE}@fr ; rdfs:comment {NOTE} . 
+source		SELECT FRA_TYPE, ENG_TYPE, NOTE FROM type
+
+mappingId	mapping--1548147431
+target		prolex:language/{LANGUAGE_NAME} a :Lexicon , :Lexicon ; :languageIdentifier {ISO_CODE} ; :script {SCRIPT2} , {SCRIPT1} ; rdfs:seeAlso {WIKIPEDIA_LINK} ; rdfs:label {FRA_LANGUAGE}@fr . 
+source		SELECT FRA_LANGUAGE, ISO_CODE, ENG_LANGUAGE, ENG_LANGUAGE AS LANGUAGE_NAME, WIKIPEDIA_LINK, SCRIPT1, SCRIPT2 FROM language
+
+mappingId	mapping--798670143
+target		prolex:entry/fr/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} a :Canonical ; :hasDerivative prolex:entry/fr/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE2} . 
+source		SELECT NUM_DERIVATIVE, REPLACE(d.LABEL_DERIVATIVE, ' ','_') AS LABEL_DERIVATIVE2, d.NUM_PROLEXEME AS NUM_CANONICAL, REPLACE(p.LABEL_PROLEXEME, ' ','_') AS LABEL_CANONICAL, p.NUM_PIVOT FROM derivative_fra d, prolexeme_fra p WHERE TABLE_ETYMOLOGY = 'prolexeme' AND p.NUM_PROLEXEME=d.NUM_ETYMOLOGY
+
+mappingId	mapping--2047630371
+target		prolex:instence/fr/{NUM_INSTANCE}-{LABEL_INSTANCE} :isInstanceOf prolex:entry/fr/alias/{NUM_ALIAS}-{LABEL_ALIAS2} . 
+source		SELECT NUM_INSTANCE, REPLACE(LABEL_INSTANCE,' ','_') AS LABEL_INSTANCE, REPLACE(LABEL_ALIAS,' ','_') AS LABEL_ALIAS2, a.NUM_ALIAS FROM instance_fra i, alias_fra a where i.NUM_ALIAS!=0 and a.NUM_ALIAS=i.NUM_ALIAS and num_derivative=0 and num_aliasization_result=0 and num_derivation_result=0
+
+mappingId	mapping-2116913464
+target		prolex:eponymy/{EPONYMY_TYPE}/{LABEL_EPONYMY} a :EponymExpression , :Antonomasia ; :isEponymOf prolex:entry/fr/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; rdfs:label {LABEL_ANTONOMASIA} . 
+source		SELECT LABEL_ANTONOMASIA,REPLACE(LABEL_ANTONOMASIA, ' ','_') AS LABEL_EPONYMY, 'antonomasia' AS EPONYMY_TYPE, REPLACE(LABEL_PROLEXEME, ' ','_') AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL FROM prolexeme_fra p, antonomasia_fra a WHERE a.NUM_PROLEXEME=p.NUM_PROLEXEME
+
+mappingId	mapping--245586788
+target		:{ENG_TYPE} :secondaryHypernym :{ENG_TYPE2} . 
+source		SELECT t1.ENG_TYPE, t2.ENG_TYPE AS ENG_TYPE2 FROM hyponymy2 h, type t1, type t2 WHERE h.NUM_TYPE=t1.NUM_TYPE AND h.NUM_SUPERTYPE=t2.NUM_SUPERTYPE
+
+mappingId	mapping-1148340558
+target		prolex:alias-category/{ENG_CATEGORY} a :AliasCategory ; rdfs:comment {NOTE} ; rdfs:label {FRA_CATEGORY}@fr . 
+source		SELECT * FROM alias_category
+
+mappingId	mapping-1563753286
+target		prolex:entry/fr/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE2} a :Derivative ; rdfs:label {LABEL_DERIVATIVE} ; :category prolex:derivative-category/{ENG_CATEGORY} ; :hasLexicon prolex:language/french ; :hasSenseAxis prolex:pivot/{NUM_PIVOT} . 
+source		SELECT d.LABEL_DERIVATIVE, dc.ENG_CATEGORY, NUM_DERIVATIVE, REPLACE(d.LABEL_DERIVATIVE, ' ','_') AS LABEL_DERIVATIVE2, p.NUM_PIVOT FROM derivative_fra d, derivative_category dc, prolexeme_fra p where d.NUM_CATEGORY=dc.NUM_CATEGORY AND p.NUM_PROLEXEME=d.NUM_PROLEXEME
+
+mappingId	mapping--410023960
+target		prolex:classification/fr/{NUM_CLASSIFICATION} a :Classification ; :context prolex:classifying-context/fr/{NUM_CLASSIFYING_CONTEXT} ; :hasConstituant prolex:constituant-element/{NUM_CONSTITUANT} . 
+source		SELECT NUM_CLASSIFYING_CONTEXT AS NUM_CLASSIFICATION, RESTRICTION AS NUM_CONSTITUANT FROM classifying_context_fra
+
+mappingId	mapping-1818463172
+target		:{ENG_EXISTENCE}Existence a :Existence ; rdfs:comment {NOTE} ; rdfs:label {ENG_EXISTENCE}@en . 
+source		SELECT FRA_EXISTENCE, ENG_EXISTENCE, NOTE FROM existence
+
+mappingId	mapping--211087985
+target		prolex:instence/fr/{NUM_INSTANCE}-{LABEL_INSTANCE} :isInstanceOf prolex:entry/fr/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} . 
+source		SELECT NUM_INSTANCE, REPLACE(LABEL_INSTANCE,' ','_') AS LABEL_INSTANCE, REPLACE(LABEL_PROLEXEME,' ','_') AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL FROM instance_fra i, prolexeme_fra p where i.NUM_DERIVATIVE=0 and i.NUM_ALIAS=0 and p.NUM_PROLEXEME=i.NUM_PROLEXEME and num_aliasization_result=0 and num_derivation_result=0
+
+mappingId	mapping-1475095277
+target		prolex:eponymy/{EPONYMY_TYPE}/{LABEL_EPONYMY} a :EponymExpression , :Idiom ; :isEponymOf prolex:entry/fr/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; rdfs:label {LABEL_IDIOM} . 
+source		SELECT LABEL_IDIOM,REPLACE(LABEL_IDIOM, ' ','_') AS LABEL_EPONYMY, 'idiom' AS EPONYMY_TYPE, REPLACE(LABEL_PROLEXEME, ' ','_') AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL FROM idiomatic_prolexeme_fra ip, prolexeme_fra p, idiom_fra i WHERE i.NUM_IDIOM=ip.NUM_IDIOM AND ip.NUM_PROLEXEME=p.NUM_PROLEXEME
+
+mappingId	mapping--1542075861
+target		prolex:pivot/{NUM_PIVOT} :type :{ENG_TYPE} . 
+source		SELECT p.NUM_PIVOT, t.ENG_TYPE FROM pivot2 p, type t WHERE p.NUM_TYPE=t.NUM_TYPE
+
+mappingId	mapping--1909703344
+target		prolex:entry/fr/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} a :Canonical ; :hasSenseAxis prolex:pivot/{NUM_PIVOT} ; rdfs:label {LABEL_PROLEXEME} ; :hasLexicon prolex:language/french ; :sorting prolex:constituant-element/{NUM_CONSTITUANT} ; :frequency prolex:reliability-code/{FREQUENCY} ; rdfs:seeAlso {WIKIPEDIA_LINK} . 
+source		SELECT LABEL_PROLEXEME, SORT AS NUM_CONSTITUANT, case NUM_FREQUENCY when 1 then 'commonlyUsed' when 2 then 'infrequentlyUsed' else 'rarelyUsed' end AS FREQUENCY, WIKIPEDIA_LINK, NUM_PROLEXEME AS NUM_CANONICAL, REPLACE(LABEL_PROLEXEME, ' ','_') AS LABEL_CANONICAL, NUM_PIVOT FROM prolexeme_fra
+
+mappingId	mapping--1446710421
+target		prolex:pivot/{NUM_PIVOT} :{ENG_DIASYSTEM}Synonym prolex:pivot/{NUM_PIVOT2} . 
+source		SELECT NUM_CANONICAL_PIVOT AS NUM_PIVOT, NUM_SYNONYMOUS_PIVOT AS NUM_PIVOT2, ENG_DIASYSTEM  FROM synonymy s, diasystem d WHERE s.NUM_DIASYSTEM=d.NUM_DIASYSTEM
+
+mappingId	mapping-252070704
+target		prolex:eponymy/{EPONYMY_TYPE}/{LABEL_EPONYMY} a :EponymExpression , :Terminology ; :isEponymOf prolex:entry/fr/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} ; rdfs:label {LABEL_TERMINOLOGY} . 
+source		SELECT LABEL_TERMINOLOGY,REPLACE(LABEL_TERMINOLOGY, ' ','_') AS LABEL_EPONYMY, 'terminology' AS EPONYMY_TYPE, REPLACE(LABEL_PROLEXEME, ' ','_') AS LABEL_CANONICAL, p.NUM_PROLEXEME AS NUM_CANONICAL FROM terminology_fra t, terminological_prolexeme_fra tp, prolexeme_fra p WHERE t.NUM_TERMINOLOGY=tp.NUM_TERMINOLOGY AND tp.NUM_PROLEXEME=p.NUM_PROLEXEME
+
+mappingId	mapping-33287870
+target		prolex:synset/{NUM_PIVOT} a :SynSet ; :member prolex:pivot/{NUM_PIVOT2} ; :canonicPivot prolex:pivot/{NUM_PIVOT} . 
+source		(SELECT s.NUM_CANONICAL_PIVOT AS NUM_PIVOT, s.NUM_SYNONYMOUS_PIVOT AS NUM_PIVOT2 FROM synonymy s WHERE s.NUM_CANONICAL_PIVOT NOT IN (SELECT NUM_SYNONYMOUS_PIVOT FROM synonymy)) UNION (SELECT c.NUM_CANONICAL_PIVOT AS NUM_PIVOT, s.NUM_SYNONYMOUS_PIVOT AS NUM_PIVOT2 FROM synonymy s, synonymy c WHERE s.NUM_CANONICAL_PIVOT=c.NUM_SYNONYMOUS_PIVOT)
+
+mappingId	mapping--910228022
+target		prolex:pivot/{NUM_PIVOT} a :SenseAxis ; :existence :{ENG_EXISTENCE}Existence . 
+source		SELECT p.NUM_PIVOT, e.ENG_EXISTENCE FROM  pivot2 p, existence e WHERE p.NUM_EXISTENCE=e.NUM_EXISTENCE
+
+mappingId	mapping--1588752743
+target		prolex:entry/fr/alias/{NUM_ALIAS}-{LABEL_ALIAS2} a :Alias ; :hasDerivative prolex:entry/fr/derivative/{NUM_DERIVATIVE}-{LABEL_DERIVATIVE2} . 
+source		SELECT NUM_DERIVATIVE, REPLACE(d.LABEL_DERIVATIVE, ' ','_') AS LABEL_DERIVATIVE2, a.NUM_ALIAS, REPLACE(a.LABEL_ALIAS, ' ','_') AS LABEL_ALIAS2 FROM derivative_fra d, alias_fra a WHERE TABLE_ETYMOLOGY = 'alias' AND a.NUM_ALIAS=d.NUM_ETYMOLOGY
+
+mappingId	mapping-1903889582
+target		prolex:accessibility-context/fr/{NUM_ACCESSIBILITY_CONTEXT} a :AccessibilityContext ; :morphology prolex:morphology/fr/{MORPHOLOGY_NAME} ; :hasTemplate {LABEL_ACCESSIBILITY_CONTEXT} . 
+source		SELECT NUM_ACCESSIBILITY_CONTEXT, LABEL_ACCESSIBILITY_CONTEXT, ABBREVIATION AS MORPHOLOGY_NAME FROM accessibility_context_fra ac, morphology_fra m WHERE ac.NUM_MORPHOLOGY=m.NUM_MORPHOLOGY
+
+mappingId	mapping--35318882
+target		prolex:functional-word/fr/{LABEL_WORD} a :FunctionalWord ; :category prolex:collocation-category/{ENG_CATEGORY} ; rdfs:label {LABEL_COLLOCATION} . 
+source		SELECT ENG_CATEGORY, LABEL_COLLOCATION, REPLACE(LABEL_COLLOCATION, ' ','_') AS LABEL_WORD  FROM collocation_category cc,  collocation_fra c WHERE c.NUM_CATEGORY=cc.NUM_CATEGORY
+
+mappingId	mapping--1538587294
+target		prolex:instence/fr/{NUM_INSTANCE}-{LABEL_INSTANCE} :morphology prolex:morphology/fr/{MORPHOLOGY_NAME} . 
+source		SELECT NUM_INSTANCE, LABEL_INSTANCE, ABBREVIATION AS MORPHOLOGY_NAME FROM instance_fra i, morphology_fra m WHERE i.NUM_MORPHOLOGY=m.NUM_MORPHOLOGY
+
+mappingId	mapping-246619072
+target		prolex:instence/fr/{NUM_INSTANCE}-{LABEL_INSTANCE} a :WordForm ; :hasPartOfSpeech prolex:part-of-speech/{ENG_POS} ; rdfs:label {LABEL_INSTANCE} . 
+source		SELECT NUM_INSTANCE, LABEL_INSTANCE, ENG_POS FROM instance_fra i, part_of_speech p WHERE p.NUM_POS=i.NUM_POS
+
+mappingId	mapping--585537940
+target		prolex:derivative-category/{ENG_CATEGORY} a :DerivativeCategory ; :hasPartOfSpeech prolex:part-of-speech/{ENG_POS} ; rdfs:comment {NOTE} ; rdfs:label {FRA_CATEGORY}@fr . 
+source		SELECT dc.FRA_CATEGORY, dc.ENG_CATEGORY, dc.NOTE, pos.ENG_POS FROM derivative_category dc, part_of_speech pos WHERE dc.NUM_POS=pos.NUM_POS
+
+mappingId	mapping-937867690
+target		prolex:morphology/fr/{MORPHOLOGY_NAME} a :Morphology ; :grammaticalNumber {NUMBER} ; :grammaticalGender {GENDER} . 
+source		SELECT ABBREVIATION AS MORPHOLOGY_NAME, GENDER, NUMBER FROM morphology_fra
+
+mappingId	mapping-300614330
+target		prolex:entry/fr/canonical/{NUM_CANONICAL}-{LABEL_CANONICAL} a :Canonical ; :collocation prolex:functional-word/fr/{LABEL_WORD} . 
+source		SELECT REPLACE(LABEL_PROLEXEME,' ','_') AS LABEL_CANONICAL, REPLACE(LABEL_COLLOCATION, ' ','_') AS LABEL_WORD, p.NUM_PROLEXEME AS NUM_CANONICAL  FROM collocation_prolexeme_fra cp, collocation_fra c, prolexeme_fra p WHERE cp.NUM_COLLOCATION=c.NUM_COLLOCATION AND cp.NUM_PROLEXEME=p.NUM_PROLEXEME
+
+mappingId	mapping-1993774730
+target		prolex:collocation-category/{ENG_CATEGORY} a :CollocationCategory ; rdfs:comment {NOTE} ; rdfs:label {FRA_CATEGORY}@fr . 
+source		SELECT FRA_CATEGORY, ENG_CATEGORY, NOTE FROM collocation_category
+]]
+

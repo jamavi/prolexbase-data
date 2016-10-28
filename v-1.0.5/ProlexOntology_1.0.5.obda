@@ -1,0 +1,60 @@
+[PrefixDeclaration]
+:		http://www.univ-tours.fr/li/Prolex/Ontology#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xsd:		http://www.w3.org/2001/XMLSchema#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[SourceDeclaration]
+sourceUri	Prolexbase
+connectionUrl	jdbc:mysql://localhost/ProlexbaseV1
+username	root
+password	dattebayo88fr
+driverClass	com.mysql.jdbc.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	MAPID-Pivot
+target		:Pivot-{num_pivot} a :Pivot . 
+source		select num_pivot from pivot2
+
+mappingId	MAPID-Pivot_type
+target		:Pivot-{num_pivot} :type :{eng_type} . 
+source		select num_pivot, eng_type from pivot2 p inner join type t on p.num_type=t.num_type
+
+mappingId	MAPID-Propername
+target		:{eng_type} a :PropernameHypernym . 
+source		select eng_type from type
+
+mappingId	MAPID-Existence
+target		:{eng_existence}Existence a :Existence ; rdfs:label {eng_existence}@en , {fra_existence}@fr ; rdfs:comment {note} . 
+source		select eng_existence, fra_existence, note from existence
+
+mappingId	MAPID-Pivot_existence
+target		:Pivot-{num_pivot} :existence :{eng_existence}Existence . 
+source		select num_pivot, eng_existence from pivot2 p inner join existence e on p.num_existence=e.num_existence
+
+mappingId	MAPID-Pivot_synonymy
+target		:Pivot-{num1} :{relation} :Pivot-{num2} . 
+source		select p1.num_pivot as num1, p2.num_pivot as num2, concat(d.eng_diasystem,'Synonym') as relation from pivot2 p1, pivot2 p2, synonymy s, diasystem d where p1.num_pivot = s.num_canonical_pivot and p2.num_pivot = s.num_synonymous_pivot and s.num_diasystem=d.num_diasystem
+
+mappingId	MAPID-meronym
+target		:Pivot-{num1} :meronym :Pivot-{num2} . 
+source		select p1.num_pivot as num1, p2.num_pivot as num2 from pivot2 p1, pivot2 p2, meronymy m where p1.num_pivot = m.num_holonymous_pivot and p2.num_pivot = m.num_meronymous_pivot
+
+mappingId	MAPID-Pivot_accecibility
+target		:Pivot-{num1} :{relation} :Pivot-{num2} . 
+source		select p1.num_pivot as num1, p2.num_pivot as num2, concat(f.eng_subjectfile,'Accessible') as relation from pivot2 p1, pivot2 p2, accessibility a, subject_file f where p1.num_pivot = a.num_argument1_pivot and p2.num_pivot = a.num_argument2_pivot and a.num_subjectfile=f.num_subjectfile
+
+mappingId	MAPID-Prolexeme
+target		:Entry-prolexeme-{num_prolexeme} a :Lemma ; :pivot :Pivot-{num_pivot} ; rdfs:label {label_prolexeme} . 
+source		select num_prolexeme, label_prolexeme, num_pivot, sort from prolexeme_fra
+
+mappingId	MAPID-Alias
+target		:Entry-alias-{num_alias} a :Alias ; :isAliasOf :Entry-prolexeme-{num_prolexeme} ; rdfs:label {label_alias} . 
+source		select num_alias, label_alias, num_prolexeme, num_category from alias_fra
+
+mappingId	MAPID-Derivative
+target		:Entry-derivative-{num_derivative} a :Derivative ; :isDerivativeOf :Entry-{table_etymology}-{num_etymology} ; rdfs:label {label_derivative} . 
+source		select num_derivative, label_derivative, num_category, table_etymology, num_etymology from derivative_fra
+]]
+
